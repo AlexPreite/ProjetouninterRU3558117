@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso Gratuito de Excel: Do Básico ao Intermediário | Projeto Educacional</title>
+    <meta name="description" content="Curso gratuito de Excel do básico ao intermediário. Projeto educacional sem fins lucrativos para ajudar a comunidade." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+      body { 
+        font-family: 'Inter', sans-serif; 
+        scroll-behavior: smooth;
+      }
+      .excel-gradient {
+        background: linear-gradient(135deg, #217346 0%, #1e6b3d 50%, #185a33 100%);
+      }
+      .excel-green {
+        background-color: #217346;
+      }
+      .excel-green-hover:hover {
+        background-color: #1e6b3d;
+      }
+      .excel-light-green {
+        background-color: #e8f5e8;
+      }
+      .excel-border {
+        border-color: #217346;
+      }
+      .excel-text {
+        color: #217346;
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(33, 115, 70, 0.1), 0 10px 10px -5px rgba(33, 115, 70, 0.04);
+      }
+      .swiper-slide img {
+        transition: transform 0.3s ease;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+      .swiper-slide:hover img {
+        transform: scale(1.02);
+      }
+      .swiper-button-next,
+      .swiper-button-prev {
+        background-color: #217346 !important;
+        color: white !important;
+        width: 50px !important;
+        height: 50px !important;
+        border-radius: 50% !important;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+      }
+      .swiper-button-next:hover,
+      .swiper-button-prev:hover {
+        background-color: #1e6b3d !important;
+      }
+      .swiper-pagination-bullet {
+        background-color: #217346 !important;
+      }
+      .swiper-pagination-bullet-active {
+        background-color: #185a33 !important;
+      }
+      @media (max-width: 768px) {
+        .swiper {
+          height: 300px !important;
+        }
+        .swiper-button-next,
+        .swiper-button-prev {
+          width: 40px !important;
+          height: 40px !important;
+        }
+      }
+      .fullscreen {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: 9999 !important;
+        background: white !important;
+      }
+      .fullscreen .swiper {
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      .fullscreen .swiper-wrapper {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 100% !important;
+        width: 100% !important;
+      }
+      .fullscreen .swiper-slide {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 100% !important;
+        width: 100% !important;
+        text-align: center !important;
+      }
+      .fullscreen .swiper-slide img {
+        max-width: 90vw !important;
+        max-height: 90vh !important;
+        object-fit: contain !important;
+        margin: 0 auto !important;
+        display: block !important;
+      }
+      .fullscreen .swiper-button-next,
+      .fullscreen .swiper-button-prev {
+        position: absolute !important;
+        z-index: 10000 !important;
+      }
+      .fullscreen .swiper-pagination {
+        position: absolute !important;
+        bottom: 20px !important;
+        z-index: 10000 !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+      }
+      .badge {
+        background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .placeholder-section {
+        background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+        border: 2px dashed #ccc;
+        border-radius: 12px;
+        padding: 40px;
+        text-align: center;
+        color: #666;
+      }
+      .fullscreen .swiper-pagination {
+        position: absolute !important;
+        bottom: 20px !important;
+        z-index: 10000 !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+      }
+      
+      /* Melhorias para mobile */
+      @media (max-width: 768px) {
+        .fullscreen {
+          position: fixed !important;
+          top: 0 !important;
+          left: 0 !important;
+          width: 100vw !important;
+          height: 100vh !important;
+          z-index: 9999 !important;
+          background: white !important;
+          overflow: hidden !important;
+        }
+        
+        .fullscreen .swiper-slide img {
+          max-width: 95vw !important;
+          max-height: 85vh !important;
+          object-fit: contain !important;
+          margin: 0 auto !important;
+          display: block !important;
+        }
+        
+        .fullscreen .swiper-pagination {
+          bottom: 15px !important;
+        }
+        
+        .fullscreen .swiper-button-next,
+        .fullscreen .swiper-button-prev {
+          width: 40px !important;
+          height: 40px !important;
+        }
+      }
+      
+      /* Indicador visual removido - não há mais tela cheia no curso intermediário */
+      
+      /* Estilos específicos do curso intermediário removidos */
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Header com foco educacional -->
+    <header class="excel-gradient text-white">
+      <nav class="max-w-6xl mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-graduation-cap text-3xl"></i>
+            <div>
+              <span class="text-2xl font-bold">Excel Educacional</span>
+              <div class="badge">100% Gratuito</div>
+            </div>
+          </div>
+          <div class="hidden md:flex space-x-6">
+            <a href="#sobre" class="hover:text-green-200 transition-colors">Sobre o Projeto</a>
+            <a href="#slides" class="hover:text-green-200 transition-colors">Conteúdo</a>
+            <a href="#curso-intermediario" class="hover:text-green-200 transition-colors">Curso Intermediário</a>
+            <a href="#contato" class="hover:text-green-200 transition-colors">Contato</a>
+          </div>
+        </div>
+      </nav>
+      
+      <div class="text-center py-16 px-6">
+        <div class="badge mx-auto mb-4">Projeto Educacional</div>
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">Curso Gratuito de Excel</h1>
+        <h2 class="text-2xl md:text-3xl mb-6 opacity-90">Do Básico ao Intermediário</h2>
+        <p class="text-lg md:text-xl mb-8 opacity-90 max-w-3xl mx-auto">33 slides interativos para ajudar você a dominar o Excel. Projeto desenvolvido para a comunidade, sem fins lucrativos.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button id="startBasicCourseBtn" class="bg-white excel-text px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors">
+            <i class="fas fa-graduation-cap mr-2"></i>Começar a Estudar
+          </button>
+          <button id="startIntermediateCourseBtn" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:excel-text transition-colors">
+            <i class="fas fa-arrow-right mr-2"></i>Parte 2 do Curso
+          </button>
+          <button id="learnMoreBtn" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:excel-text transition-colors">
+            <i class="fas fa-info-circle mr-2"></i>Saiba Mais
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6">
+      <!-- Seção sobre o projeto -->
+      <section id="sobre" class="py-16">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4 excel-text">Sobre o Projeto</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">Este curso foi desenvolvido como projeto educacional para ajudar a comunidade a desenvolver habilidades essenciais no Excel.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-xl shadow-lg card-hover text-center border-t-4 excel-border">
+            <div class="w-20 h-20 excel-light-green rounded-full flex items-center justify-center mx-auto mb-6">
+              <i class="fas fa-heart text-3xl excel-text"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4 excel-text">100% Gratuito</h3>
+            <p class="text-gray-600">Acesso total ao conteúdo sem nenhum custo. Nosso objetivo é democratizar o conhecimento.</p>
+          </div>
+          
+          <div class="bg-white p-8 rounded-xl shadow-lg card-hover text-center border-t-4 excel-border">
+            <div class="w-20 h-20 excel-light-green rounded-full flex items-center justify-center mx-auto mb-6">
+              <i class="fas fa-users text-3xl excel-text"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4 excel-text">Para a Comunidade</h3>
+            <p class="text-gray-600">Desenvolvido pensando no benefício coletivo e na capacitação profissional de todos.</p>
+          </div>
+          
+          <div class="bg-white p-8 rounded-xl shadow-lg card-hover text-center border-t-4 excel-border">
+            <div class="w-20 h-20 excel-light-green rounded-full flex items-center justify-center mx-auto mb-6">
+              <i class="fas fa-graduation-cap text-3xl excel-text"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4 excel-text">Projeto Acadêmico</h3>
+            <p class="text-gray-600">Trabalho desenvolvido para a faculdade com foco em impacto social positivo.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção dos slides -->
+      <section id="slides" class="py-16">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4 excel-text">Conteúdo do Curso</h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">Explore os 33 slides interativos que compõem nosso curso completo de Excel, do básico ao intermediário</p>
+        </div>
+
+        <div id="swiperContainer" class="swiper mySwiper max-w-[960px] mx-auto h-[600px] relative rounded-xl overflow-hidden shadow-2xl bg-white">
+          <div class="swiper-wrapper">
+            <!-- Slides 1 a 33 -->
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide1.JPG" alt="Slide 1 - Introdução ao Excel" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide2.JPG" alt="Slide 2 - Interface do Excel" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide3.JPG" alt="Slide 3 - Células e Formatação" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide4.JPG" alt="Slide 4 - Fórmulas Básicas" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide5.JPG" alt="Slide 5 - Funções Matemáticas" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide6.JPG" alt="Slide 6 - Formatação Condicional" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide7.JPG" alt="Slide 7 - Gráficos" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide8.JPG" alt="Slide 8 - Tabelas Dinâmicas" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide9.JPG" alt="Slide 9 - Funções Avançadas" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide10.JPG" alt="Slide 10 - Macros Básicas" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide11.JPG" alt="Slide 11 - Validação de Dados" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide12.JPG" alt="Slide 12 - Proteção de Planilhas" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide13.JPG" alt="Slide 13 - Dashboards" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide14.JPG" alt="Slide 14 - Análise de Dados" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide15.JPG" alt="Slide 15 - Power Query" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide16.JPG" alt="Slide 16 - Power Pivot" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide17.JPG" alt="Slide 17 - VBA Básico" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide18.JPG" alt="Slide 18 - Automação" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide19.JPG" alt="Slide 19 - Casos Práticos" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide20.JPG" alt="Slide 20 - Certificação" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide21.JPG" alt="Slide 21 - Funções de Texto" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide22.JPG" alt="Slide 22 - Funções de Data" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide23.JPG" alt="Slide 23 - Funções Lógicas" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide24.JPG" alt="Slide 24 - Funções de Pesquisa" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide25.JPG" alt="Slide 25 - Funções Financeiras" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide26.JPG" alt="Slide 26 - Funções Estatísticas" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide27.JPG" alt="Slide 27 - Macros Avançadas" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide28.JPG" alt="Slide 28 - VBA Intermediário" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide29.JPG" alt="Slide 29 - VBA Avançado" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide30.JPG" alt="Slide 30 - Integração com Outros Sistemas" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide31.JPG" alt="Slide 31 - Otimização de Performance" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide32.JPG" alt="Slide 32 - Boas Práticas" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Slide33.JPG" alt="Slide 33 - Projeto Final e Certificação" class="max-w-full max-h-full object-contain" />
+            </div>
+          </div>
+
+          <!-- Navegação -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+        
+        <!-- Controles -->
+        <div class="flex justify-center mt-8 space-x-4">
+          <button id="fullscreenBtn" class="excel-green text-white px-6 py-3 rounded-lg hover:excel-green-hover transition-colors font-semibold">
+            <i class="fas fa-expand mr-2"></i>Tela Cheia
+          </button>
+          <button id="closeFullscreenBtn" class="hidden bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors font-semibold">
+            <i class="fas fa-times mr-2"></i>Sair da Tela Cheia
+          </button>
+        </div>
+      </section>
+
+      <!-- Seção de avaliação -->
+      <section class="py-16">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4 excel-text">Avalie o Curso</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">Sua opinião é fundamental para melhorar o conteúdo e ajudar outros estudantes. Preencha o formulário abaixo e compartilhe sua experiência!</p>
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 excel-border">
+            <div class="text-center mb-6">
+              <h3 class="text-2xl font-bold mb-2 excel-text">Formulário de Avaliação</h3>
+              <p class="text-gray-600">Ajude-nos a melhorar o curso respondendo algumas perguntas</p>
+            </div>
+            
+            <div class="flex justify-center">
+              <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSeBZD9KmIgswMpU1E1U6GY9y4XLoWGzqEp8_Uv3w1ddN4ACLg/viewform?embedded=true" 
+                width="640" 
+                height="4487" 
+                frameborder="0" 
+                marginheight="0" 
+                marginwidth="0"
+                style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
+              >
+                Carregando…
+              </iframe>
+            </div>
+            
+            <div class="text-center mt-6">
+              <p class="text-sm text-gray-500">
+                <i class="fas fa-info-circle mr-1"></i>
+                O formulário será enviado diretamente para o Google Forms. Suas respostas são anônimas e nos ajudarão a melhorar o curso.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Campo para Curso Intermediário -->
+      <section id="curso-intermediario" class="py-16">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4 excel-text">Curso Intermediário de Excel</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">Aprofunde seus conhecimentos com 40 slides avançados que vão levar suas habilidades no Excel para o próximo nível</p>
+        </div>
+
+        <div id="swiperContainerIntermediario" class="swiper mySwiperIntermediario max-w-[960px] mx-auto h-[600px] relative rounded-xl overflow-hidden shadow-2xl bg-white">
+          <div class="swiper-wrapper">
+            <!-- Slides Intermediário 1 a 40 -->
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 1.JPG" alt="Intermediário 1 - Introdução ao Curso Avançado" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 2.JPG" alt="Intermediário 2 - Funções Avançadas" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 3.JPG" alt="Intermediário 3 - Fórmulas Complexas" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 4.JPG" alt="Intermediário 4 - Análise de Dados" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 5.JPG" alt="Intermediário 5 - Dashboards Avançados" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 6.JPG" alt="Intermediário 6 - Power Query" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 7.JPG" alt="Intermediário 7 - Power Pivot" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 8.JPG" alt="Intermediário 8 - Tabelas Dinâmicas Avançadas" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 9.JPG" alt="Intermediário 9 - Macros Intermediárias" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 10.JPG" alt="Intermediário 10 - VBA Básico" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 11.JPG" alt="Intermediário 11 - Automação de Processos" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 12.JPG" alt="Intermediário 12 - Validação Avançada" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 13.JPG" alt="Intermediário 13 - Proteção e Segurança" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 14.JPG" alt="Intermediário 14 - Gráficos Avançados" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 15.JPG" alt="Intermediário 15 - Análise Estatística" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 16.JPG" alt="Intermediário 16 - Funções Financeiras" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 17.JPG" alt="Intermediário 17 - Cenários e Previsões" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 18.JPG" alt="Intermediário 18 - Solver e Otimização" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 19.JPG" alt="Intermediário 19 - Integração com Banco de Dados" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 20.JPG" alt="Intermediário 20 - APIs e Web Services" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 21.JPG" alt="Intermediário 21 - Relatórios Automatizados" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 22.JPG" alt="Intermediário 22 - E-mail Automatizado" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 23.JPG" alt="Intermediário 23 - Formulários Avançados" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 24.JPG" alt="Intermediário 24 - Controles de Interface" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 25.JPG" alt="Intermediário 25 - Eventos e Triggers" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 26.JPG" alt="Intermediário 26 - Tratamento de Erros" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 27.JPG" alt="Intermediário 27 - Debugging e Testes" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 28.JPG" alt="Intermediário 28 - Performance e Otimização" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 29.JPG" alt="Intermediário 29 - Boas Práticas de Código" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 30.JPG" alt="Intermediário 30 - Documentação" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 31.JPG" alt="Intermediário 31 - Casos de Uso Reais" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 32.JPG" alt="Intermediário 32 - Projetos Práticos" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 33.JPG" alt="Intermediário 33 - Desafios Avançados" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 34.JPG" alt="Intermediário 34 - Certificação Intermediária" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 35.JPG" alt="Intermediário 35 - Preparação para Avançado" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 36.JPG" alt="Intermediário 36 - Recursos Adicionais" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 37.JPG" alt="Intermediário 37 - Comunidade e Suporte" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 38.JPG" alt="Intermediário 38 - Próximos Passos" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 39.JPG" alt="Intermediário 39 - Conclusão do Curso" class="max-w-full max-h-full object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center bg-white p-4">
+              <img src="Intermediario 40.jpg" alt="Intermediário 40 - Certificado Final" class="max-w-full max-h-full object-contain" />
+            </div>
+          </div>
+
+          <!-- Navegação -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+        
+        <!-- Controles -->
+        <div class="flex justify-center mt-8 space-x-4">
+          <!-- Botões de tela cheia removidos do curso intermediário -->
+        </div>
+      </section>
+
+      <!-- Campo para Forms de Avaliação Intermediário -->
+      <section class="py-16">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4 excel-text">Avalie o Curso Intermediário</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">Sua opinião sobre o curso intermediário é fundamental para melhorar o conteúdo avançado e ajudar outros estudantes. Preencha o formulário abaixo!</p>
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 excel-border">
+            <div class="text-center mb-6">
+              <h3 class="text-2xl font-bold mb-2 excel-text">Formulário de Avaliação - Curso Intermediário</h3>
+              <p class="text-gray-600">Ajude-nos a melhorar o curso avançado respondendo algumas perguntas específicas</p>
+            </div>
+            
+            <div class="flex justify-center">
+              <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSd6x8NF2E15oT_1cweBkPKhNn-xRRT85B0ueapwTG1c97Kqsw/viewform?embedded=true" 
+                width="640" 
+                height="4773" 
+                frameborder="0" 
+                marginheight="0" 
+                marginwidth="0"
+                style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
+              >
+                Carregando…
+              </iframe>
+            </div>
+            
+            <div class="text-center mt-6">
+              <p class="text-sm text-gray-500">
+                <i class="fas fa-info-circle mr-1"></i>
+                O formulário será enviado diretamente para o Google Forms. Suas respostas são anônimas e nos ajudarão a melhorar o curso intermediário.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção de contato -->
+      <section id="contato" class="py-16">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4 excel-text">Entre em Contato</h2>
+          <p class="text-xl text-gray-600">Dúvidas sobre o curso? Quer contribuir com o projeto? Entre em contato!</p>
+        </div>
+        
+        <div class="max-w-2xl mx-auto">
+          <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 excel-border">
+            <h3 class="text-xl font-semibold mb-4 excel-text">Informações de Contato</h3>
+            <div class="space-y-4">
+              <div class="flex items-center">
+                <i class="fas fa-envelope excel-text mr-3 text-xl"></i>
+                <span>alexpreite26@gmail.com</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-university excel-text mr-3 text-xl"></i>
+                <span>Projeto Acadêmico - UNINTER</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-map-marker-alt excel-text mr-3 text-xl"></i>
+                <span>Franco da Rocha, SP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer educacional -->
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">Excel Educacional</h3>
+            <p class="text-gray-300 mb-2">Projeto educacional gratuito para a comunidade.</p>
+            <div class="badge">Sem Fins Lucrativos</div>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Conteúdo</h4>
+            <ul class="space-y-2 text-gray-300">
+              <li><a href="#slides" class="hover:text-white transition-colors">Excel Básico</a></li>
+              <li><a href="#curso-intermediario" class="hover:text-white transition-colors">Excel Intermediário</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Exercícios Práticos</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Material de Apoio</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-4">Institucional</h4>
+            <ul class="space-y-2 text-gray-300">
+              <li><a href="#" class="hover:text-white transition-colors">UNINTER</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Projeto Acadêmico</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Licença</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+          <p>&copy; 2025 Excel Educacional. Projeto acadêmico sem fins lucrativos. Desenvolvido por Alexsander para a UNINTER RU: 3558117.</p>
+          <p class="text-sm mt-2">Este projeto visa democratizar o conhecimento e ajudar a comunidade.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Inicialização do Swiper
+      const swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        loop: false,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        keyboard: {
+          enabled: true,
+        },
+        effect: "slide",
+        speed: 600,
+      });
+
+      // Inicialização do Swiper Intermediário
+      const swiperIntermediario = new Swiper(".mySwiperIntermediario", {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: false,
+        pagination: {
+          el: ".mySwiperIntermediario .swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".mySwiperIntermediario .swiper-button-next",
+          prevEl: ".mySwiperIntermediario .swiper-button-prev",
+        },
+        keyboard: {
+          enabled: true,
+        },
+        effect: "slide",
+        speed: 600,
+        observer: true,
+        observeParents: true,
+        watchOverflow: true,
+      });
+      
+      // Salvar referência global
+      window.swiperIntermediario = swiperIntermediario;
+
+      // Detectar gestos de toque para sair da tela cheia
+      let touchStartY = 0;
+      let touchEndY = 0;
+      
+      function handleTouchStart(e) {
+        touchStartY = e.touches[0].clientY;
+      }
+      
+      function handleTouchEnd(e) {
+        touchEndY = e.changedTouches[0].clientY;
+        const swipeDistance = touchStartY - touchEndY;
+        
+        // Se o usuário deslizar para cima mais de 100px, sair da tela cheia
+        if (swipeDistance > 100) {
+          // Funcionalidade removida - não há mais tela cheia no curso intermediário
+        }
+      }
+      
+      // Adicionar listeners de toque aos containers
+      const swiperContainerIntermediario = document.getElementById('swiperContainerIntermediario');
+      swiperContainerIntermediario.addEventListener('touchstart', handleTouchStart);
+      swiperContainerIntermediario.addEventListener('touchend', handleTouchEnd);
+      
+      // Clique duplo para sair da tela cheia
+      let lastTap = 0;
+      
+      function handleDoubleTap(e) {
+        const currentTime = new Date().getTime();
+        const tapLength = currentTime - lastTap;
+        
+        if (tapLength < 500 && tapLength > 0) {
+          // Clique duplo detectado - funcionalidade removida
+          e.preventDefault();
+        }
+        lastTap = currentTime;
+      }
+      
+      // Adicionar listeners de clique duplo
+      swiperContainerIntermediario.addEventListener('touchend', handleDoubleTap);
+
+      // Sair da tela cheia com ESC
+      document.addEventListener('keydown', function(e) {
+        // Funcionalidade removida - não há mais tela cheia no curso intermediário
+      });
+
+      // Botão "Começar Agora" - vai para slides em tela cheia
+      document.getElementById('startBasicCourseBtn').addEventListener('click', function() {
+        // Primeiro vai para a seção dos slides
+        document.getElementById('slides').scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+        
+        // Depois de um pequeno delay, ativa a tela cheia
+        setTimeout(() => {
+          // Funcionalidade de tela cheia mantida apenas para o curso básico
+        }, 1000);
+      });
+
+      // Botão "Parte 2 do Curso" - vai para curso intermediário
+      document.getElementById('startIntermediateCourseBtn').addEventListener('click', function() {
+        document.getElementById('curso-intermediario').scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+
+      // Botão "Saiba Mais" - vai para seção sobre
+      document.getElementById('learnMoreBtn').addEventListener('click', function() {
+        document.getElementById('sobre').scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+
+      // Smooth scroll para links internos
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Animação de scroll para elementos
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      // Observar elementos para animação
+      document.querySelectorAll('.card-hover').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+      });
+
+      // Verificar se as imagens carregaram corretamente
+      document.querySelectorAll('.swiper-slide img').forEach(img => {
+        img.addEventListener('error', function() {
+          console.error('Erro ao carregar imagem:', this.src);
+          this.style.display = 'none';
+          this.parentElement.innerHTML = '<div class="text-center text-gray-500"><i class="fas fa-image text-4xl mb-2"></i><p>Imagem não encontrada</p></div>';
+        });
+      });
+    </script>
+  </body>
+</html> 
